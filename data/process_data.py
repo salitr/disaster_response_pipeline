@@ -9,13 +9,14 @@ from sqlalchemy import create_engine
                 ### Functions ###
 
 def load_data(messages_filepath, categories_filepath):
-    """Load and merge datasets
+    """
+    Load and merge datasets
 
-    Args:
+    inputs:
         messages_filepath: Filepath for messages dataset.
         categories_filepath: Filepath for categories dataset.
 
-    Returns:
+    output:
         df: merged dataframe of messages and categories datasets.
     """
     # load messages dataset
@@ -30,11 +31,13 @@ def load_data(messages_filepath, categories_filepath):
     return df
 
 def clean_data(df):
-    """Clean dataframe and convert categories
+    """
+    Clean dataframe and convert categories
 
-    Args:
+    input:
         df: merged dataframe of messages and categories datasets.
-    Returns:
+
+    output:
         df: clean dataframe
     """
     # create a dataframe of the 36 individual category columns
@@ -71,13 +74,14 @@ def clean_data(df):
     return df
 
 def save_data(df, database_filename):
-    """Save cleaned dataframe into SQLite database.
+    """
+    Save cleaned dataframe into SQLite database.
 
-    Args:
+    inputs:
         df: clean dataframe
         database_filename: Filename of databased with clean dataframe
 
-    Returns:
+    output:
         None
     """
     # Save the clean dataset into an sqlite database
