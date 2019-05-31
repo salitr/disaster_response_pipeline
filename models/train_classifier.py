@@ -38,12 +38,13 @@ from termcolor import colored, cprint
                 ### Functions ###
 
 def load_data(database_filepath):
-    """Load and merge datasets
+    """
+    Load and merge datasets
 
-    Args:
+    input:
         database_filename: Filename for a clean database
 
-    Returns:
+    outputs:
         X: messages dataset
         y: all other features dataset
         category_names: List with all category names.
@@ -59,13 +60,14 @@ def load_data(database_filepath):
     return X, y, category_names
 
 def tokenize(text):
-    """Normalize, tokenize and lemmatize text string
+    """
+    Normalize, tokenize and lemmatize text string
 
-    Args:
+    input:
         text: messages
 
-    Returns:
-        clean data
+    output:
+        clean_tokens: clean data
     """
     # Normalize text
     text = re.sub(r'[^a-zA-Z0-9]', ' ', text.lower())
@@ -87,12 +89,13 @@ def tokenize(text):
     return clean_tokens
 
 def build_model():
-    """Build a pipeline
+    """
+    Build a pipeline
 
-    Args:
+    input:
         None
 
-    Returns:
+    output:
         cv: GridSearch model with pipeline and classifier
     """
     pipeline = Pipeline([
@@ -112,15 +115,16 @@ def build_model():
     return cv
 
 def evaluate_model(model, X_test, y_test, category_names):
-    """prints classifaction_report with precision, recall, and F-score
+    """
+    prints classifaction_report with precision, recall, and F-score
 
-    Args:
+    inputs:
         model: model object
         X_test
         y_test
         category_names: List of all category names.
 
-    Returns:
+    output:
         None
     """
     # predict on test data
@@ -149,13 +153,14 @@ def evaluate_model(model, X_test, y_test, category_names):
             print('F-score: {}'.format(colored(round(fscore, 2), 'red')))
 
 def save_model(model, model_filepath):
-     """Save model as pickle file
+     """
+     Save model as a pickle file
 
-    Args:
+    inputs:
         model: model object
         model_filepath: Filepath to save the model
 
-    Returns:
+    output:
         None
     """
     # Open the file to save as pkl file
